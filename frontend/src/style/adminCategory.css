@@ -1,0 +1,50 @@
+.admin-category-page {
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+}
+.admin-category-list{
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.admin-category-list h2{
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.admin-category-list button{
+    background-color: #f68b1e;
+    color: #fff;
+    font-size: 20px;
+    border: none;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.admin-category-list button:hover{
+    background-color: #a25d19;
+}
+
+.admin-category-list ul li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px 10px 15px;
+    margin-bottom: 1.5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.admin-category-list ul li span{
+    color: #444;
+}
+
+.admin-bt button{
+    background-color: tomato;
+    color: #fff;
+    border: 8px 16px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.admin-bt .admin-btn-edit{
+    background-color: #f68b1e;
+}
