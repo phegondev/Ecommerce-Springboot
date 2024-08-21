@@ -1,0 +1,101 @@
+.container{
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-bottom: 9rem;
+}
+.message{
+    text-align: center;
+    color: #f68b1e;
+    margin-bottom: 20xp;
+    font-size: 1.1rem;
+}
+.item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+img{
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.item div{
+    flex-grow: 1;
+    margin-left: 20px;
+}
+.item h2{
+    font-size: 1.4rem;
+    color: #555;
+}
+.item p{
+    font-size: 0.9rem;
+    color: #777;
+    margin: 10px 0;
+}
+
+.controls{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.controls button{
+    background-color: #f68b1e;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.controls button:hover{
+    background-color: #c99969;
+}
+.controls span{
+    font-size: 1.2rem;
+    margin: 0 15px;
+}
+.price{
+    font-size: 1.4rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.container h2:last-child{
+    text-align: right;
+    font-size: 1.6rem;
+    color: #333;
+    margin-top: 20px;
+}
+.checkout, .clear{
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 20px auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 22px;
+    transition: background-color 0.3s, transform 0.3s;
+
+}
+.checkout{
+    background-color: #f68b1e;
+}
+.clear{
+    background-color: #999;
+}
+.checkout:hover{
+    background-color: #b5885b;
+}
+.clear:hover{
+    background-color: #b88a8a;
+}

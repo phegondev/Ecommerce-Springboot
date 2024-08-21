@@ -1,0 +1,17 @@
+<nav>
+    <a routerLink="/">LOGO</a>
+    <!-- Search  Form -->
+    <form (submit)="handleSearchSubmit()">
+        <input type="text" placeholder="Search product ..." name="searchValue" [(ngModel)]="searchValue">
+        <button type="submit">Search</button>
+    </form>
+    <div>
+        <a routerLink="/">Home</a>
+        <a routerLink="/categories">Category</a>
+        <a *ngIf="isAuthenticated" routerLink="/profile">Account</a>
+        <a *ngIf="isAdmin" routerLink="/admin">Admin</a>
+        <a *ngIf="!isAuthenticated" routerLink="/login">Login</a>
+        <a *ngIf="isAuthenticated" (click)="handleLogout()">Logout</a>
+        <a routerLink="/cart">Cart</a>
+    </div>
+</nav>

@@ -1,0 +1,9 @@
+.home{
+    padding: 20px;
+    margin-top: 9rem;
+}
+.error{
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}

@@ -1,0 +1,68 @@
+.admin-orders-page{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow-x: hidden;
+}
+.admin-orders-page h2{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.filter-container{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.filter-container select{
+    padding: 9px;
+    font-size: 14px;
+}
+.statusFilter{
+    padding: 10px;
+}
+.statusFilter label, .searchStatus label{
+    font-size: 20px;
+    font-weight: 700;
+}
+.searchStatus{
+    margin-left: 45%;
+    padding: 10px;
+}
+.orders-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.orders-table th, .orders-table td{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.orders-table th{
+    background-color: #f2f2f2;
+    text-align: center;
+}
+.orders-table tr:hover{
+    background-color: #f1f1f1;
+
+}
+.orders-table tr:nth-child(even){
+    background-color: #f9f9f9;
+}
+.error-message{
+    color: red;
+    margin-bottom: 20px;
+}
+
+tbody button{
+    padding: 10px;
+    background-color: #f68b1e;
+    border-radius: 5px;
+    font-weight: 700;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+}
+tbody button:hover{
+    background-color: #975818;
+}

@@ -1,0 +1,51 @@
+<div class="profile">
+    <h2>Welcome {{ userInfo?.name}}</h2>
+
+    <ng-container *ngIf="error; else profileContent">
+        <p class="error">{{error}}</p>
+    </ng-container>
+
+    <ng-template #profileContent>
+        <div *ngIf="userInfo">
+            <p><strong>Name: </strong>{{userInfo.name}}</p>
+            <p><strong>Email: </strong>{{userInfo.email}}</p>
+            <p><strong>PhoneNumber: </strong>{{userInfo.phoneNumber}}</p>
+
+            <div>
+                <h3>Address</h3>
+                <div *ngIf="userInfo.address; else noAddress">
+                    <p><strong>Street: </strong>{{userInfo.address.street}}</p>
+                    <p><strong>City: </strong>{{userInfo.address.city}}</p>
+                    <p><strong>State: </strong>{{userInfo.address.state}}</p>
+                    <p><strong>Zip Code: </strong>{{userInfo.address.zipCode}}</p>
+                    <p><strong>Country: </strong>{{userInfo.address.country}}</p>
+                </div>
+
+                <ng-template #noAddress>
+                    <p>No Addres Available</p>
+                </ng-template>
+
+                <button class="profile-button" (click)="handleAddressClick()">
+                    {{userInfo.address ? 'Edit Address' : 'Add Address'}}
+                </button>
+            </div>
+
+            <h3>Order History</h3>
+            <ul>
+                <li *ngFor="let order of paginatedOrders">
+                    <img [src]="order.product?.imageUrl" [alt]="order.product?.name" />
+                    <div>
+                        <p><strong>Name: </strong>{{order.product?.name}}</p>
+                        <p><strong>Status: </strong>{{order.status}}</p>
+                        <p><strong>Quantity: </strong>{{order.quantity}}</p>
+                        <p><strong>Price: </strong>{{order.price}}</p>
+
+                    </div>
+                </li>
+
+            </ul>
+            <app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (pageChange)="onPageChange($event)">
+            </app-pagination>
+        </div>
+    </ng-template>
+</div>

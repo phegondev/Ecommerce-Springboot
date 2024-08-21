@@ -1,0 +1,12 @@
+<div>
+    <p *ngIf="message">{{message}}</p>
+
+    <form [formGroup]="categoryForm" (ngSubmit)="handleSubmit()">
+        <h2>Add Category</h2>
+
+        <input type="text" placeholder="Category name" formControlName="name" 
+        [class.invalid]="categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched">
+
+        <button type="submit" [disabled]="categoryForm.invalid"> Add Category</button>
+    </form>
+</div>

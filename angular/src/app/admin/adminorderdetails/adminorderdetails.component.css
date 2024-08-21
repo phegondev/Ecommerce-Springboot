@@ -1,0 +1,47 @@
+.container {
+    padding: 20px;
+    margin: auto;
+    max-width: 70%;
+    margin-bottom: 9rem;
+}
+
+.message {
+    color: #f68b1e;
+    margin-bottom: 20px;
+    font-size: 40px;
+    text-align: center;
+}
+
+.item-details {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.info {
+    margin: 40px 5px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+select {
+    padding: 10px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #f68b1e;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+button:hover {
+    background-color: #c89765;
+}
