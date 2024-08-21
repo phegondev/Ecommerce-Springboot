@@ -1,0 +1,40 @@
+*{
+    font-size: 20px;
+}
+.admin{
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 8rem;
+}
+h2{
+    font-size: 30px;
+    margin: 20px;
+}
+button{
+    padding: 10px 15px;
+    background-color: #f68b1e;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+    border-bottom: 1px solid #ddd;
+}
+.delete{
+    background-color: red;
+}
+button:hover{
+    opacity: 0.8;
+}

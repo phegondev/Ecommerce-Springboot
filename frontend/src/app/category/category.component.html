@@ -1,0 +1,14 @@
+<div class="container">
+    <ng-container *ngIf="error; else categoryList">
+        <p class="error">{{error}}</p>
+    </ng-container>
+
+    <ng-template #categoryList>
+        <div>
+            <h2>Categories</h2>
+            <ul *ngFor = "let category of categories" (click) ="handleCategoryClick(category.id)">
+                <li><button>{{category.name}}</button></li>
+            </ul>
+        </div>
+    </ng-template>
+</div>

@@ -1,0 +1,52 @@
+<div class="container">
+    <h2>Orders</h2>
+    <p *ngIf="error" class="error">{{error}}</p>
+
+    <div class="filter-container">
+        <div>
+            <label>Filter By Status</label>
+            <select [(ngModel)]="statusFilter" (change)="handleFilterChange()">
+                <option value="">All</option>
+                <option *ngFor="let status of OderStatus" [value]="status">{{status}}</option>
+            </select>
+        </div>
+
+        <div>
+            <label> Seaarch By Status</label>
+            <select [(ngModel)]="searchStatus" (change)="handleSearchStatusChanged()">
+                <option value="">All</option>
+                <option *ngFor="let status of OderStatus" [value]="status">{{status}}</option>
+            </select>
+        </div>
+    </div>
+
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Order Id</th>
+                <th>Customer</th>
+                <th>Status</th>
+                <th>Price</th>
+                <th>Date Ordered</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let order of filterOrders">
+                <td>{{order.id}}</td>
+                <td>{{order.user.name}}</td>
+                <td>{{order.status}}</td>
+                <td>{{order.price.toFixed(2)}}</td>
+                <td>{{order.createdAt | date: 'dd/MM/yyyy'}}</td>
+                <td>
+                    <button (click)="navigateToOrderDetailsPage(order.id)">Details</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
+        (pageChange)="onPageChange($event)"></app-pagination>
+</div>

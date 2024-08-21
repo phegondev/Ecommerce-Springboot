@@ -1,0 +1,8 @@
+<div >
+    <p *ngIf="error" class="error">{{error}}</p>
+    <div *ngIf="!error">
+        <app-productlist [products]="products" ></app-productlist>
+        <app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (pageChange)="onPageChange($event)" ></app-pagination>
+
+    </div>
+</div>
