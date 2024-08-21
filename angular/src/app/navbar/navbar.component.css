@@ -1,0 +1,33 @@
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #F68B1E;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+input{
+    padding: 15px;
+    width: 500px;
+    border: none;
+    border-radius: 3px;
+}
+button{
+    padding: 15px;
+    border: none;
+    margin-left: 2px;
+    background-color: #fff;
+    color: #F68B1E;
+    font-weight: bold;
+    border-radius: 3px;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+    margin: 0 10px;
+    font-weight: bold;
+    font-size: 24px;
+}

@@ -1,0 +1,37 @@
+div{
+    padding: 20px;
+    max-width: 500px;
+    margin: auto;
+}
+p{
+    margin-bottom: 20px;
+    color: #f68b1e;
+}
+h2{
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+input{
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+input.invalid{
+    border-color: red;
+}
+button{
+    padding: 10px 15px;
+    background-color: #f68b1e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    width: 100%;
+    margin: auto;
+}
+button:disabled{
+    background-color: #aaa;
+}

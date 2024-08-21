@@ -1,0 +1,23 @@
+<form [formGroup]="editProductForm" (ngSubmit)="handleSubmit()">
+    <h2>Edit Ptoduct</h2>
+    <p class="message" *ngIf="message">{{message}}</p>
+
+    <input type="file" (change)="handleImageChange($event)">
+    <img *ngIf="imageUrl" [src]="imageUrl" alt="produt name" >
+
+    <select formControlName="categoryId">
+        <option value="">Select Category</option>
+        <option *ngFor="let cat of categories" [value]="cat.id"> {{cat.name}}</option>
+    </select>
+
+    <label for="">Name</label>
+    <input formControlName="name" type="text" placeholder="Produt Name">
+
+    <label for="">Description</label>
+    <textarea formControlName="description" placeholder="Description"></textarea>
+
+    <label for="">Price</label>
+    <input formControlName="price" type="number" placeholder="Price">
+
+    <button type="submit">Update</button>
+</form>

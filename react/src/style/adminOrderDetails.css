@@ -1,0 +1,58 @@
+.order-details-page{
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 100px;
+}
+.order-details-page h2{
+    text-align: center;
+    font-weight: 700;
+}
+.message{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.order-item-details{
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.info, .status-change{
+    margin-bottom: 20px;
+}
+.info p{
+    margin: 5px 0;
+}
+.status-option{
+    padding: 10px;
+}
+.update-status-button{
+    background-color: #f68b1e;
+    color: #fff;
+    margin-left: 10px;
+    padding: 10px;
+    font-weight: 800;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+}
+.update-status-button:hover{
+    background-color: #b77029;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

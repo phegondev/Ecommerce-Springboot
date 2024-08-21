@@ -1,0 +1,83 @@
+.profile-page{
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ffd8b1;
+    border-radius: 10px;
+}
+
+.profile-page h2{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: 800;
+}
+.profile-page h3{
+    font-size: 30px;
+}
+.profile-page p{
+    margin-bottom: 10px;
+}
+.profile-page strong{
+    color: #f68b1e;
+    font-size: 20px;
+}
+.profile-page ul{
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.profile-page li{
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.profile-page li:hover{
+    background-color: #f0f0f0;
+}
+.profile-page li img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+.profile-page li div{
+    flex-grow: 1;
+}
+
+.profile-page li h4{
+    margin-bottom: 5px;
+    font-size: 1.3em;
+}
+
+.profile-page li p{
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.profile-button{
+    background-color: #f68b1e;
+    padding: 13px;
+    font-weight: 700;
+    border: 1px solid white;
+    color: #fff;
+    font-size: 20px;
+    margin: 10px 0px;
+} 
+
+.profile-button:hover{
+    background-color: #86490d;
+}
+.error-message{
+    color: red;
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 20px;
+}

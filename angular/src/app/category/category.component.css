@@ -1,0 +1,43 @@
+.container{
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 8rem;
+}
+
+h2{
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+li{
+    flex: 1 1 calc(33.33% - 20px);
+    max-width: calc(33.33% - 20px);;
+}
+
+button{
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    background-color: #f68b1e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color  0.3 ease;
+}
+
+.error{
+    color: red;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
