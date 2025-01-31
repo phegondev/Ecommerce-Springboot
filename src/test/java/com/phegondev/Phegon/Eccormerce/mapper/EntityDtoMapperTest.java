@@ -10,6 +10,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class EntityDtoMapperTest {
 
@@ -127,7 +129,7 @@ class EntityDtoMapperTest {
         User user = new User();
         user.setId(1L);
         user.setEmail("john.doe@example.com");
-        user.setRole(UserRole.USER); // Ensure role is set to avoid NullPointerException
+        user.setRole(UserRole.USER);
 
         OrderItem orderItem = new OrderItem();
         orderItem.setId(1L);
@@ -142,5 +144,80 @@ class EntityDtoMapperTest {
         assertNotNull(userDto.getOrderItemList());
         assertEquals(1, userDto.getOrderItemList().size());
         assertEquals(1L, userDto.getOrderItemList().get(0).getId());
+    }
+
+    // Tests for mapOrderItemToDtoPlusProduct
+    @Test
+    void testMapOrderItemToDtoPlusProduct() {
+        // Mock OrderItem and Product
+        OrderItem orderItem = mock(OrderItem.class);
+        Product product = mock(Product.class);
+
+        when(orderItem.getId()).thenReturn(1L);
+        when(orderItem.getQuantity()).thenReturn(2);
+        when(orderItem.getPrice()).thenReturn(BigDecimal.valueOf(200));
+        when(orderItem.getStatus()).thenReturn(OrderStatus.PENDING);
+        when(orderItem.getCreatedAt()).thenReturn(null);
+        when(orderItem.getProduct()).thenReturn(product);
+        when(product.getId()).thenReturn(1L);
+        when(product.getName()).thenReturn("Product A");
+        when(product.getDescription()).thenReturn("Product description");
+        when(product.getPrice()).thenReturn(BigDecimal.valueOf(50.00));
+        when(product.getImageUrl()).thenReturn("http://image.url");
+
+        // Call method
+        OrderItemDto result = mapper.mapOrderItemToDtoPlusProduct(orderItem);
+
+        // Assert the fields in result
+        assertNotNull(result);
+        assertEquals(1L, result.getId());
+        assertEquals(2, result.getQuantity());
+        assertEquals(BigDecimal.valueOf(200), result.getPrice());
+        assertEquals("PENDING", result.getStatus());
+        assertNotNull(result.getProduct());
+        assertEquals(1L, result.getProduct().getId());
+        assertEquals("Product A", result.getProduct().getName());
+    }
+
+    // Tests for mapOrderItemToDtoPlusProductAndUser
+    @Test
+    void testMapOrderItemToDtoPlusProductAndUser() {
+        // Mock OrderItem, Product, and User
+        OrderItem orderItem = mock(OrderItem.class);
+        Product product = mock(Product.class);
+        User user = mock(User.class);
+
+        when(orderItem.getId()).thenReturn(1L);
+        when(orderItem.getQuantity()).thenReturn(2);
+        when(orderItem.getPrice()).thenReturn(BigDecimal.valueOf(200));
+        when(orderItem.getStatus()).thenReturn(OrderStatus.PENDING);
+        when(orderItem.getCreatedAt()).thenReturn(null);
+        when(orderItem.getProduct()).thenReturn(product);
+        when(orderItem.getUser()).thenReturn(user);
+        when(product.getId()).thenReturn(1L);
+        when(product.getName()).thenReturn("Product A");
+        when(product.getDescription()).thenReturn("Product description");
+        when(product.getPrice()).thenReturn(BigDecimal.valueOf(50.00));
+        when(product.getImageUrl()).thenReturn("http://image.url");
+        when(user.getId()).thenReturn(1L);
+        when(user.getName()).thenReturn("User Name");
+        when(user.getPhoneNumber()).thenReturn("1234567890");
+        when(user.getEmail()).thenReturn("user@example.com");
+        when(user.getRole()).thenReturn(UserRole.ADMIN);
+
+        // Call method
+        OrderItemDto result = mapper.mapOrderItemToDtoPlusProductAndUser(orderItem);
+
+        // Assert the fields in result
+        assertNotNull(result);
+        assertNotNull(result.getProduct());
+        assertNotNull(result.getUser());
+        assertEquals(1L, result.getId());
+        assertEquals(2, result.getQuantity());
+        assertEquals(BigDecimal.valueOf(200), result.getPrice());
+        assertEquals("PENDING", result.getStatus());
+        assertEquals("Product A", result.getProduct().getName());
+        assertEquals("User Name", result.getUser().getName());
+        assertEquals("1234567890", result.getUser().getPhoneNumber());
     }
 }

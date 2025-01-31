@@ -49,4 +49,22 @@ public class AuthUser implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        AuthUser authUser = (AuthUser) obj;
+        return user != null && user.getEmail().equals(authUser.user.getEmail());
+    }
+
+    @Override
+    public int hashCode() {
+        return user != null ? user.getEmail().hashCode() : 0;
+    }
+
 }
