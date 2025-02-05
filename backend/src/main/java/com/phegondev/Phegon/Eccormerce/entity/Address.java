@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Data
 @Entity
@@ -26,4 +27,24 @@ public class Address {
 
     @Column(name = "created_at")
     private final LocalDateTime createdAt = LocalDateTime.now();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || !(o instanceof Address)) return false;
+        Address address = (Address) o;
+        return id.equals(address.id) &&
+                Objects.equals(street, address.street) &&
+                Objects.equals(city, address.city) &&
+                Objects.equals(state, address.state) &&
+                Objects.equals(zipCode, address.zipCode) &&
+                Objects.equals(country, address.country) &&
+                address.canEqual(this);
+    }
+
+
+    public boolean canEqual(Object other) {
+        return other instanceof Address;
+    }
+
 }

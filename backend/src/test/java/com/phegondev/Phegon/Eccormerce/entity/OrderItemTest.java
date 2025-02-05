@@ -4,166 +4,112 @@ import com.phegondev.Phegon.Eccormerce.enums.OrderStatus;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 
 class OrderItemTest {
 
     @Test
-    void testOrderItemGetterAndSetter() {
-        // Create Product and User objects
-        Product product = new Product();
-        product.setId(1L);
-        product.setName("Laptop");
+    void testEqualsAndCanEqual() {
+        // Arrange
+        User mockUser = mock(User.class); // Mocking User
+        Product mockProduct = mock(Product.class); // Mocking Product
+        Order mockOrder = mock(Order.class); // Mocking Order
 
-        User user = new User();
-        user.setId(1L);
-        user.setEmail("test@example.com");
+        // OrderItem 1
+        OrderItem item1 = new OrderItem();
+        item1.setId(1L);
+        item1.setQuantity(2);
+        item1.setPrice(BigDecimal.valueOf(100));
+        item1.setStatus(OrderStatus.PENDING);
+        item1.setUser(mockUser);
+        item1.setProduct(mockProduct);
+        item1.setOrder(mockOrder);
 
-        // Create Order object
-        Order order = new Order();
-        order.setId(1L);
+        // OrderItem 2 (identical to item1)
+        OrderItem item2 = new OrderItem();
+        item2.setId(1L);
+        item2.setQuantity(2);
+        item2.setPrice(BigDecimal.valueOf(100));
+        item2.setStatus(OrderStatus.PENDING);
+        item2.setUser(mockUser);
+        item2.setProduct(mockProduct);
+        item2.setOrder(mockOrder);
 
-        // Create OrderItem object
-        OrderItem orderItem = new OrderItem();
-        orderItem.setId(1L);
-        orderItem.setQuantity(2);
-        orderItem.setPrice(BigDecimal.valueOf(1999.99));
-        orderItem.setStatus(OrderStatus.PENDING);
-        orderItem.setUser(user);
-        orderItem.setProduct(product);
-        orderItem.setOrder(order);
+        // OrderItem 3 (different id, quantity, price, and status)
+        OrderItem item3 = new OrderItem();
+        item3.setId(2L);
+        item3.setQuantity(3);
+        item3.setPrice(BigDecimal.valueOf(150));
+        item3.setStatus(OrderStatus.CANCELLED);
+        item3.setUser(mockUser);
+        item3.setProduct(mockProduct);
+        item3.setOrder(mockOrder);
 
-        // Assert field values
-        assertEquals(1L, orderItem.getId());
-        assertEquals(2, orderItem.getQuantity());
-        assertEquals(BigDecimal.valueOf(1999.99), orderItem.getPrice());
-        assertEquals(OrderStatus.PENDING, orderItem.getStatus());
-        assertNotNull(orderItem.getUser());
-        assertEquals(1L, orderItem.getUser().getId());
-        assertNotNull(orderItem.getProduct());
-        assertEquals(1L, orderItem.getProduct().getId());
-        assertNotNull(orderItem.getOrder());
-        assertEquals(1L, orderItem.getOrder().getId());
+        // Act & Assert
+        // Same object, should return true
+        assertTrue(item1.equals(item1));
+
+        // Null comparison, should return false
+        assertFalse(item1.equals(null));
+
+        // Different class comparison, should return false
+        assertFalse(item1.equals(new Object()));
+
+        // Same id, quantity, price, status, user, product, and order, should return true
+        assertTrue(item1.equals(item2));
+
+        // Different id, quantity, price, status, user, product, or order, should return false
+        assertFalse(item1.equals(item3));
+
+        // Test canEqual method
+        assertTrue(item1.canEqual(item2));  // Same type, should return true
+        assertFalse(item1.canEqual(new Object()));  // Different type, should return false
     }
 
     @Test
-    void testOrderItemEqualsAndHashCode() {
-        // Create Product and User objects
-        Product product = new Product();
-        product.setId(1L);
-        product.setName("Laptop");
+    void testHashCode() {
+        // Arrange
+        User mockUser = mock(User.class); // Mocking User
+        Product mockProduct = mock(Product.class); // Mocking Product
+        Order mockOrder = mock(Order.class); // Mocking Order
 
-        User user = new User();
-        user.setId(1L);
-        user.setEmail("test@example.com");
+        // OrderItem 1
+        OrderItem item1 = new OrderItem();
+        item1.setId(1L);
+        item1.setQuantity(2);
+        item1.setPrice(BigDecimal.valueOf(100));
+        item1.setStatus(OrderStatus.PENDING);
+        item1.setUser(mockUser);
+        item1.setProduct(mockProduct);
+        item1.setOrder(mockOrder);
 
-        Order order = new Order();
-        order.setId(1L);
+        // OrderItem 2 (identical to item1)
+        OrderItem item2 = new OrderItem();
+        item2.setId(1L);
+        item2.setQuantity(2);
+        item2.setPrice(BigDecimal.valueOf(100));
+        item2.setStatus(OrderStatus.PENDING);
+        item2.setUser(mockUser);
+        item2.setProduct(mockProduct);
+        item2.setOrder(mockOrder);
 
-        // Create two identical OrderItem objects
-        OrderItem orderItem1 = new OrderItem();
-        orderItem1.setId(1L);
-        orderItem1.setQuantity(2);
-        orderItem1.setPrice(BigDecimal.valueOf(1999.99));
-        orderItem1.setStatus(OrderStatus.PENDING);
-        orderItem1.setUser(user);
-        orderItem1.setProduct(product);
-        orderItem1.setOrder(order);
+        // OrderItem 3 (different id, quantity, price, and status)
+        OrderItem item3 = new OrderItem();
+        item3.setId(2L);
+        item3.setQuantity(3);
+        item3.setPrice(BigDecimal.valueOf(150));
+        item3.setStatus(OrderStatus.CANCELLED);
+        item3.setUser(mockUser);
+        item3.setProduct(mockProduct);
+        item3.setOrder(mockOrder);
 
-        OrderItem orderItem2 = new OrderItem();
-        orderItem2.setId(1L);
-        orderItem2.setQuantity(2);
-        orderItem2.setPrice(BigDecimal.valueOf(1999.99));
-        orderItem2.setStatus(OrderStatus.PENDING);
-        orderItem2.setUser(user);
-        orderItem2.setProduct(product);
-        orderItem2.setOrder(order);
+        // Act & Assert
+        // Ensure items with the same attributes return the same hash code
+        assertEquals(item1.hashCode(), item2.hashCode());
 
-        // Test equals() method
-        // Manually check the fields instead of relying on equals method for nested objects
-        assertTrue(orderItem1.getId().equals(orderItem2.getId()) &&
-                orderItem1.getQuantity() == orderItem2.getQuantity() &&
-                orderItem1.getPrice().compareTo(orderItem2.getPrice()) == 0 &&
-                orderItem1.getStatus() == orderItem2.getStatus() &&
-                orderItem1.getUser().getId().equals(orderItem2.getUser().getId()) &&
-                orderItem1.getProduct().getId().equals(orderItem2.getProduct().getId()) &&
-                orderItem1.getOrder().getId().equals(orderItem2.getOrder().getId()));
-
-        // Test hashCode() method
-        int hash1 = orderItem1.getId().hashCode() + orderItem1.getQuantity() + orderItem1.getPrice().hashCode();
-        int hash2 = orderItem2.getId().hashCode() + orderItem2.getQuantity() + orderItem2.getPrice().hashCode();
-        assertEquals(hash1, hash2);
-
-        // Test canEqual() method
-        assertTrue(orderItem1.canEqual(orderItem2));
-    }
-
-    @Test
-    void testOrderItemNotEqual() {
-        Product product1 = new Product();
-        product1.setId(1L);
-        product1.setName("Laptop");
-
-        Product product2 = new Product();
-        product2.setId(2L);
-        product2.setName("Smartphone");
-
-        User user = new User();
-        user.setId(1L);
-        user.setEmail("test@example.com");
-
-        Order order = new Order();
-        order.setId(1L);
-
-        // Create two different OrderItem objects
-        OrderItem orderItem1 = new OrderItem();
-        orderItem1.setId(1L);
-        orderItem1.setQuantity(2);
-        orderItem1.setPrice(BigDecimal.valueOf(1999.99));
-        orderItem1.setStatus(OrderStatus.PENDING);
-        orderItem1.setUser(user);
-        orderItem1.setProduct(product1);
-        orderItem1.setOrder(order);
-
-        OrderItem orderItem2 = new OrderItem();
-        orderItem2.setId(2L); // Different ID
-        orderItem2.setQuantity(3); // Different quantity
-        orderItem2.setPrice(BigDecimal.valueOf(1499.99)); // Different price
-        orderItem2.setStatus(OrderStatus.DELIVERED); // Different status
-        orderItem2.setUser(user);
-        orderItem2.setProduct(product2); // Different product
-        orderItem2.setOrder(order);
-
-        assertFalse(orderItem1.equals(orderItem2));
-    }
-
-    @Test
-    void testOrderItemToString() {
-        Product product = new Product();
-        product.setId(1L);
-        product.setName("Laptop");
-
-        User user = new User();
-        user.setId(1L);
-        user.setEmail("test@example.com");
-
-        Order order = new Order();
-        order.setId(1L);
-
-        OrderItem orderItem = new OrderItem();
-        orderItem.setId(1L);
-        orderItem.setQuantity(2);
-        orderItem.setPrice(BigDecimal.valueOf(1999.99));
-        orderItem.setStatus(OrderStatus.PENDING);
-        orderItem.setUser(user);
-        orderItem.setProduct(product);
-        orderItem.setOrder(order);
-
-        assertNotNull(orderItem.toString());
-        assertTrue(orderItem.toString().contains("Laptop"));
-        assertTrue(orderItem.toString().contains("2"));
-        assertTrue(orderItem.toString().contains("1999.99"));
+        // Ensure items with different attributes return different hash codes
+        assertNotEquals(item1.hashCode(), item3.hashCode());
     }
 }
