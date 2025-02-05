@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-<<<<<<< HEAD
 class PhegonEccormerceApplicationTests {
 
 	@Test
@@ -12,7 +11,6 @@ class PhegonEccormerceApplicationTests {
 	}
 
 }
-=======
 class PhegonEccormerceApplicationTest {
 
 	@Test
@@ -27,4 +25,4 @@ class PhegonEccormerceApplicationTest {
 		PhegonEccormerceApplication.main(args);
 	}
 }
->>>>>>> 851b1e8 (delete secrete msg)
+
